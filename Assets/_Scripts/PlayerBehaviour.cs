@@ -21,13 +21,14 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Character Controller")] 
     public CharacterController controller;
 
-    [Header("MiniMap Properties")]
-    public GameObject miniMapBoarder;
+    [Header("MiniMap")] 
+    public GameObject miniMapBorder;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        miniMapBorder.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,6 +58,12 @@ public class PlayerBehaviour : MonoBehaviour
         // gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        // Toggle MiniMap
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
+        }
     }
 
     void OnDrawGizmos()
@@ -64,6 +71,4 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
     }
-
-
 }
