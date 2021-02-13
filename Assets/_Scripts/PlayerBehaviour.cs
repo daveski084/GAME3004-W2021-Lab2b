@@ -21,6 +21,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Character Controller")] 
     public CharacterController controller;
 
+    [Header("MiniMap Properties")]
+    public GameObject miniMapBoarder;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,4 +64,6 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
     }
+
+
 }
